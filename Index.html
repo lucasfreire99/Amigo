@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Amizade</title>
+
+  <!-- 💖 Favicon de coração vermelho -->
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/833/833472.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #imagem {
+      width: 50%;
+      height: auto;
+      display: none; /* Oculta a imagem inicialmente */
+    }
+
+    /* ===== Estilo do botão e container (Uiverse.io by Spacious74) ===== */
+    button {
+      font-size: 1.4em;
+      padding: 0.6em 0.8em;
+      border-radius: 0.5em;
+      border: none;
+      background-color: #000;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 2px 2px 3px #000000b4;
+    }
+
+    .container {
+      position: relative;
+      padding: 3px;
+      background: linear-gradient(90deg, #03a9f4, #f441a5);
+      border-radius: 0.9em;
+      transition: all 0.4s ease;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      border-radius: 0.9em;
+      z-index: -10;
+      filter: blur(0);
+      transition: filter 0.4s ease;
+    }
+
+    .container:hover::before {
+      background: linear-gradient(90deg, #03a9f4, #f441a5);
+      filter: blur(1.2em);
+    }
+
+    .container:active::before {
+      filter: blur(0.2em);
+    }
+  </style>
+</head>
+<body>
+  <img src="https://i.pinimg.com/originals/65/25/fe/6525fe1877e63555e085445608a7560d.jpg" alt="Imagem em tela cheia" id="imagem">
+
+  <!-- Botão estilizado -->
+  <div class="container" id="container-botao">
+    <button id="botao">Clique aqui!</button>
+  </div>
+
+  <script>
+    const botao = document.getElementById('botao');
+    const imagem = document.getElementById('imagem');
+    const container = document.getElementById('container-botao');
+
+    function entrarEmTelaCheia() {
+      const elem = document.documentElement;
+
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen(); // Safari
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen(); // IE11
+      }
+
+      imagem.style.display = 'block';
+      container.style.display = 'none';
+    }
+
+    botao.addEventListener('click', entrarEmTelaCheia);
+  </script>
+</body>
+</html>
